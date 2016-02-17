@@ -13,6 +13,7 @@ export default class Server extends React.Component {
     };
     return (
       <td>
+      <p>S{this.props.id}</p>
         <table style={tableStyle}>
           <CPU id={1}/>
           <CPU id={2}/>
