@@ -7,6 +7,11 @@ export default class Layout extends React.Component {
     return (
       <div>
         <Rack />
+        <Rack />
+        <Rack />
+        <Rack />
+        <Rack />
+        <Rack />
       </div>
     );
   }
