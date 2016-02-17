@@ -11,14 +11,17 @@ export default class Rack extends React.Component {
       cellPadding: 3,
       backgroundColor: 'aquamarine'
     };
+    var serverList = [
+      <Server />,
+      <Server />,
+      <Server />,
+      <Server />,
+      <Server />,
+      <Server />
+    ];
     return (
       <table style={tableStyle}>
-        <Server />
-        <Server />
-        <Server />
-        <Server />
-        <Server />
-        <Server />
+      {serverList}
       </table>
     );
   }

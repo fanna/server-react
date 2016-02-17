@@ -14,10 +14,10 @@ export default class Server extends React.Component {
     return (
       <td>
         <table style={tableStyle}>
-          <CPU />
-          <CPU />
-          <CPU />
-          <CPU />
+          <CPU id={1}/>
+          <CPU id={2}/>
+          <CPU id={3}/>
+          <CPU id={4}/>
         </table>
       </td>
     );

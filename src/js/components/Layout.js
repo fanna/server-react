@@ -4,14 +4,17 @@ import Rack from "./Rack";
 
 export default class Layout extends React.Component {
   render() {
+    var rackList = [
+      <Rack />,
+      <Rack />,
+      <Rack />,
+      <Rack />,
+      <Rack />,
+      <Rack />
+    ];
     return (
       <div>
-        <Rack />
-        <Rack />
-        <Rack />
-        <Rack />
-        <Rack />
-        <Rack />
+      {rackList}
       </div>
     );
   }
