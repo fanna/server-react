@@ -4,17 +4,12 @@ import Rack from "./Rack";
 
 export default class Layout extends React.Component {
   render() {
-    var rackList = [
-      <Rack id={1}/>,
-      <Rack id={2}/>,
-      <Rack id={3}/>,
-      <Rack id={4}/>,
-      <Rack id={5}/>,
-      <Rack id={6}/>
-    ];
+    var racks = [
+      1,2,3,4,5,6
+    ].map((rack_id, i) => <Rack key={i} rack_id={rack_id}/>);
     return (
       <div>
-      {rackList}
+      {racks}
       </div>
     );
   }

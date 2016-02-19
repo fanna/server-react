@@ -11,18 +11,13 @@ export default class Rack extends React.Component {
       cellPadding: 3,
       backgroundColor: 'aquamarine'
     };
-    var serverList = [
-      <Server id={1}/>,
-      <Server id={2}/>,
-      <Server id={3}/>,
-      <Server id={4}/>,
-      <Server id={5}/>,
-      <Server id={6}/>
-    ];
+    var servers = [
+      1,2,3,4,5,6
+    ].map((server_id, i) => <Server key={i} server_id={server_id}/>);
     return (
       <table style={tableStyle}>
-      <h1>R{this.props.id}</h1>
-      {serverList}
+      <h1>R{this.props.rack_id}</h1>
+      {servers}
       </table>
     );
   }

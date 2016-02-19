@@ -17,7 +17,7 @@ export default class CPU extends React.Component {
       backgroundColor: this.state.active ? 'lawngreen' : 'grey'
     };
     return (
-      <td style={cpuStyle} onClick={this.changeStatus.bind(this)}>cpu{this.props.id}</td>
+      <td style={cpuStyle} onClick={this.changeStatus.bind(this)}>cpu{this.props.cpu_id}</td>
     );
   }
 }
