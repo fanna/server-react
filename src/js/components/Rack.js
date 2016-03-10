@@ -11,9 +11,8 @@ export default class Rack extends React.Component {
       cellPadding: 3,
       backgroundColor: 'aquamarine'
     };
-    var servers = [
-      1,2,3,4,5,6
-    ].map((server_id, i) => <Server key={i} server_id={server_id}/>);
+    var servers = this.props.servers.map((server) =>
+                                     <Server key={server.id} server_id={server.id} cpus={server.cpus}/>);
     return (
       <table style={tableStyle}>
       <h1>R{this.props.rack_id}</h1>

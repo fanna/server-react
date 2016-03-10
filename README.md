@@ -1,14 +1,14 @@
 # server-react
 Admin server control in React
 
-###Start
+###Quick Start
 ```
 npm install
 ```
 then
 
 ```
-webpack
+npm run dev
 ```
 
 ###Preview

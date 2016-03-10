@@ -11,9 +11,8 @@ export default class Server extends React.Component {
       cellPadding: 3,
       backgroundColor: 'lightblue'
     };
-    var cpus = [
-      1,2,3,4
-    ].map((cpu_id, i) => <CPU key={i} cpu_id={cpu_id}/>);
+    var cpus = this.props.cpus.map((cpu) =>
+                                     <CPU key={cpu.id} cpu_id={cpu.id} active={cpu.active} />);
     return (
       <td>
       <p>S{this.props.server_id}</p>
