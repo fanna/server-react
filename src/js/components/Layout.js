@@ -4,10 +4,6 @@ import { Socket } from "phoenix-js";
 
 import Rack from "./Rack";
 
-Array.prototype.sample = function(){
-  return this[Math.floor(Math.random()*this.length)];
-}
-
 let socket = new Socket("ws://localhost:4000/socket");
 
 socket.connect();
@@ -69,24 +65,25 @@ channel.join().receive("ok", () => {
   console.log("Joined successfully")
 })
 
-var x = 0
-var y = 0
-var z = 0
-var data = true
+var rack = 0
+var server = 0
+var cpu = 0
+var cpu_status = true
 
 channel.on("new_msg", payload => {
-  data  = payload.body
-  console.log("Status change on Rack: " + x + " Server: " + y + " CPU: " + z);
-  rackList[x].servers[y].cpus[z].active = data;
+  cpu_status  = payload.status
+  rack = payload.rack
+  server = payload.server
+  cpu = payload.cpu
+  console.log("Status change on Rack: " + rack + " Server: " + server + " CPU: " + cpu);
+  console.log(cpu_status)
+  rackList[rack].servers[server].cpus[cpu].active = cpu_status;
 })
 
 export default class Layout extends React.Component {
   componentDidMount() {
      this._interval = setInterval(() => {
        channel.push("new_msg", {body: json})
-       x = [0,1,2,3,4,5].sample()
-       y = [0,1,2,3,4,5].sample()
-       z = [0,1,2,3].sample()
        this.forceUpdate();
      }, 500);
   }
