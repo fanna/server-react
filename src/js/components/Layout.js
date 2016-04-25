@@ -4,10 +4,18 @@ import { Socket } from "phoenix-js";
 
 import Server from "./Server";
 
-//let socket = new Socket("ws://rocky-ridge-42687.herokuapp.com/socket")
-let socket = new Socket("ws://localhost:4000/socket")
+let socket = new Socket("ws://rocky-ridge-42687.herokuapp.com/socket")
+//let socket = new Socket("ws://localhost:4000/socket")
 
 socket.connect();
+
+var $ = require('jquery');
+window.jQuery = $;
+window.$ = $;
+
+$.get( "http://rocky-ridge-42687.herokuapp.com/status", function( data ) {
+    alert( "Data Loaded: " + data );
+});
 
 var serverList= [
   {id: 1, cpus:[
@@ -84,12 +92,10 @@ var cpu = 0
 var cpu_status = true
 
 channel.on("new_msg", payload => {
-  cpu_status  = payload.status
-  server = payload.server
-  cpu = payload.cpu
-  console.log("Status change on Server: " + server + " CPU: " + cpu);
-  console.log(cpu_status)
-  serverList[server].cpus[cpu].active = cpu_status;
+  var received_string = payload.list
+  json = JSON.parse(received_string)
+  serverList = eval(json)
+  console.log("New info received!")
 })
 
 export default class Layout extends React.Component {
