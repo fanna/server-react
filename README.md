@@ -8,7 +8,12 @@ npm install
 then
 
 ```
-npm run dev
+cd src
+```
+then
+
+```
+python -m SimpleHTTPServer 3000
 ```
 
 ###Preview
