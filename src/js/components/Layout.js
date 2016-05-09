@@ -13,8 +13,10 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
-$.get( "http://rocky-ridge-42687.herokuapp.com/status", function( data ) {
-    alert( "Data Loaded: " + data );
+$.get( "http://localhost:4000/status", function( data ) {
+    console.log(data);
+    //var raw_data = data.match(/\[(.*)\]/);
+    //var current_status = raw_data[0].replace("\n", "");
 });
 
 var serverList= [
@@ -94,6 +96,8 @@ var cpu_status = true
 channel.on("new_msg", payload => {
   var received_string = payload.list
   json = JSON.parse(received_string)
+  console.log(received_string);
+  console.log(json);
   serverList = eval(json)
   console.log("New info received!")
 })
