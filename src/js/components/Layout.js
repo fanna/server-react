@@ -13,12 +13,6 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
-$.get( "http://localhost:4000/status", function( data ) {
-    console.log(data);
-    //var raw_data = data.match(/\[(.*)\]/);
-    //var current_status = raw_data[0].replace("\n", "");
-});
-
 var serverList= [
   {id: 1, cpus:[
     {id: 1, active: false},
@@ -82,6 +76,12 @@ var serverList= [
   }
 ]
 
+$.get( "http://localhost:4000/status", function( data ) {
+    var new_status = data.substring(18);
+    console.log("Fetch is successful");
+    serverList = eval(new_status);
+});
+
 let channel = socket.channel("rooms:lobby", {})
 let json = "false"
 
@@ -95,10 +95,7 @@ var cpu_status = true
 
 channel.on("new_msg", payload => {
   var received_string = payload.list
-  json = JSON.parse(received_string)
-  console.log(received_string);
-  console.log(json);
-  serverList = eval(json)
+  serverList = eval(received_string)
   console.log("New info received!")
 })
 
